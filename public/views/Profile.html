@@ -1,0 +1,36 @@
+<div ng-controller="ProfileController as vm">
+  <md-subheader class="secondBar md-no-sticky"><h1>{{nav.status.username | uppercase}}'s Profile</h1></md-subheader>
+  <md-grid-list md-cols-gt-sm="2" md-cols-sm="2" md-row-height-gt-md="1:1" md-row-height="5:3" md-row-height="150px" style="margin: 30px" md-gutter-gt-md="40px" md-gutter-gt-sm="8px" md-gutter="4px">
+
+    <md-grid-tile class="profileTile">
+      <md-grid-tile-header class="viewPotDetailHeader">
+        <h3 style="text-align: center; font-size: 36px;">You Are Hosting:</h3>
+    </md-grid-tile-header>
+      <div layout="column" class="recipeBodyTile">
+        <div flex>
+          <ul ng-repeat="c in vm.potluckArray.hosting">
+            <li style="list-style-type: none;">
+              <md-button style="font-size: 24px;" ng-click="vm.goToPot(c._id)">{{c.name}}</md-button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </md-grid-tile>
+
+    <md-grid-tile class="profileTile">
+      <md-grid-tile-header class="viewPotDetailHeader">
+        <h3 style="text-align: center; font-size: 36px;">You Are Attending:</h3>
+    </md-grid-tile-header>
+      <div layout="column" class="recipeBodyTile">
+        <div flex>
+          <ul ng-repeat="r in vm.potluckArray.guesting">
+            <li style="list-style-type: none;">
+              <md-button style="font-size: 24px;" ng-click="vm.goToPot(r._id)">{{r.name}}</md-button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </md-grid-tile>
+
+  </md-grid-list>
+</div>

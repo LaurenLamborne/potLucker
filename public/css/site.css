@@ -1,0 +1,108 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+h2 {
+  color: #50C9CE;
+}
+
+.homeButton {
+padding-left: 50px;
+font-size: 45px;
+color: white;
+/*#9AA0A8*/
+}
+
+.homeButton i {
+  color: #FAA300;
+}
+
+.toolbarRight {
+  padding-top: 6px;
+  padding-right: 50px;
+}
+
+.getStarted {
+  padding-left: 56px;
+  padding-top: 20px;
+}
+
+.userFont {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.uiButton {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 28px;
+  color: #50C9CE;
+}
+
+md-grid-tile {
+  background: url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSflWB1hHVw0lWa82tEAmKOwrn2NwxKcMcWmBqdIagl60pdqzAQ5FMX3I2S');
+  border-radius: 25px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  flex-grow: 1;
+  width: 33.3333%;
+  text-align: center;
+}
+
+#foot {
+  background: #50C9CE;
+  height: 70px;
+  border-radius: 0px 0px 25px 25px;
+}
+
+#fh{
+  margin: 0;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+}
+
+.gridButton :hover{
+  cursor: pointer;
+  box-shadow: 1px 0px 1px 1px gray;
+  border-radius: 25px 25px 25px 25px;
+}
+
+.secondBar {
+  text-align: center;
+  width: 100%;
+  background-color: #AA9ABA;
+  height: 80px;
+  color: #54494B;
+}
+
+.viewPotDetailsLeft {
+  border: 2px dotted #50C9CE;
+  border-radius: 20px;
+}
+
+.viewPotDetailsRight {
+  border: 2px dotted #50C9CE;
+  border-radius: 20px;
+}
+
+.viewPotDetailHeader {
+  background-color: #FAA300;
+  width: 100%;
+  border-radius: 20px 20px 0px 0px;
+  height: 80px;
+  font-size: 22px;
+  text-align: center;
+}
+
+.profileTile {
+  text-align: center;
+  background: white;
+  border-radius: 20px;
+  border: 2px dotted #50C9CE;
+  border-radius: 20px;
+}

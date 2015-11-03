@@ -1,0 +1,159 @@
+<div ng-controller="ViewPotluckController as vm">
+  <md-content>
+
+    <!-- <pre>
+    {{vm.currentUser | json}}
+    {{vm.potluck.dish | json}}
+  </pre>
+
+  {{vm.userType}} -->
+
+  <md-subheader class="secondBar md-no-sticky">
+    <h1>Potluck Details</h1>
+  </md-subheader>
+
+  <div layout="row" style="height: 40px;">
+  </div>
+
+  <div layout="row" layout-align="center center" ng-if="vm.userType.isGuest">
+    <h2><i class="zmdi zmdi-star-outline" style="color: #EFBCD5;"></i>You Are Attending!</h2>
+  </div>
+
+  <div layout="row">
+    <div flex="5">
+    </div>
+
+    <div flex="40" class="viewPotDetailsLeft">
+      <div layout="column" style="text-align: center;">
+        <div flex class="viewPotDetailHeader">
+          <h3>{{vm.potluck.name}}</h3>
+        </div>
+        <div flex>
+          <h4>Location:</h4>
+          <p>
+            {{vm.potluck.location}}
+          </p>
+        </div>
+        <div flex>
+          <h4>Date & Time</h4>
+          <p>
+            {{vm.potluck.date | date}} at {{vm.potluck.time}}
+          </p>
+        </div>
+        <div flex>
+          <h4>Details:</h4>
+          <p>
+            {{vm.potluck.details}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div flex="10">
+    </div>
+
+    <div flex="40" class="viewPotDetailsRight">
+      <div layout="column" ng-if="vm.userType.isCreator">
+        <div flex class="viewPotDetailHeader">
+          <h3>Items For Guests To Bring:</h3>
+          <md-list>
+            <md-list-item ng-repeat="q in vm.potluck.dish" style="padding: 8px;">
+              <p>{{q.dishName}}{{q.broughtBy}}</p>
+            </md-list-item>
+          </md-list>
+        </div>
+      </div>
+
+      <div layout="column" ng-if="vm.userType.isGuest">
+        <div flex class="viewPotDetailHeader">
+          <h3>You Are Bringing:</h3>
+          <md-list>
+            <md-list-item ng-repeat="q in vm.potluck.dish" style="padding: 8px;">
+              <!-- {{q}} {{vm.currentUser}} -->
+              <p ng-if="q.broughtBy==vm.currentUser._id">{{q.dishName}}</p>
+            </md-list-item>
+          </md-list>
+        </div>
+      </div>
+
+      <div layout="column" ng-if="vm.userType.isNobody">
+        <div flex class="viewPotDetailHeader">
+          <h3 >Items to Bring:</h3>
+        </div>
+        <md-list>
+          <md-list-item ng-repeat="q in vm.potluck.dish" style="padding: 8px;">
+            <p> {{q.dishName}}</p>
+            <md-checkbox ng-init="isChecked=vm.isItemChecked(q);" ng-disabled="!!q.broughtBy" ng-model="isChecked" ng-show="nav.status.username" class="md-secondary" ng-click="vm.selectedDish=q"></md-checkbox>
+          </md-list-item>
+        </md-list>
+      </div>
+    </div>
+  </div>
+
+  <div layout="row" layout-align="center center" style="padding-top:40px;" ng-if="vm.userType.isCreator">
+    <md-button class="md-raised" ng-click="vm.editPotluck(vm.potluck._id)">Edit</md-button>
+    <md-button class="md-raised" ng-click="vm.deletePotluck()">Delete</md-button>
+  </div>
+
+  <div layout="row" layout-align="center center" style="padding-top:40px;" ng-if="vm.userType.isNobody && nav.status.username">
+    <md-button class="md-raised" ng-click="vm.attend()">ATTEND</md-button>
+  </div>
+
+
+  <div layout="row" layout-align="center center" style="padding-top:40px;">
+  </div>
+
+  <!-- comments below -->
+
+  <div layout="row">
+    <div flex="5">
+    </div>
+
+    <div flex="40">
+      <!-- <div layout="row" layout-align="center center"> -->
+      <form name="userForm" ng-submit="vm.addComment()">
+        <md-input-container layout-padding>
+          <label>Comment from {{nav.status.username}}...</label>
+          <input required ng-model="vm.comment.body" />
+        </md-input-container>
+        <md-button type="submit" class="md-raised">Submit</md-button>
+      </form>
+      <!-- </div> -->
+    </div>
+
+    <div flex="10">
+    </div>
+
+    <!-- <pre>
+      {{vm.potluck.comments}}
+    </pre> -->
+
+    <div flex="40">
+
+    <div layout="column">
+      <div flex>
+        <h3 >Comments:</h3>
+      </div>
+      <md-list>
+        <md-list-item ng-repeat="c in vm.potluck.comments" style="padding: 8px;">
+          <p>{{c.body}} - {{c.user}}</p>
+        </md-list-item>
+      </md-list>
+    </div>
+  </div>
+
+
+  </div>
+
+
+  <!-- <ul>
+  <li ng-repeat="c in vm.potluck.comments">}</li>
+</ul> -->
+
+
+
+
+
+
+</md-content>
+</div>

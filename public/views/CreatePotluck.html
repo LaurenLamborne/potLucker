@@ -1,0 +1,75 @@
+<div ng-controller="CreatePotluckController as vm">
+
+  <md-subheader class="secondBar md-no-sticky">
+    <h1>Create Your Potluck</h1>
+  </md-subheader>
+
+
+  <div layout="row" layout-align="center center">
+    <div flex="50">
+      <form name="userForm" ng-submit="vm.createPotluck()">
+
+        <md-input-container layout-padding>
+          <label>Potluck Name...</label>
+          <input required ng-model="vm.potluck.name" />
+        </md-input-container>
+
+        <div layout="row">
+          <div flex="70">
+            <md-input-container layout-padding>
+              <label>Time...</label>
+              <input required ng-model="vm.potluck.time" />
+            </md-input-container>
+          </div>
+          <div flex="30">
+            <md-datepicker required ng-model="vm.potluck.date" md-placeholder="Enter date"></md-datepicker>
+          </div>
+        </div>
+
+        <md-input-container layout-padding>
+          <label>Location...</label>
+          <input required ng-model="vm.potluck.location" />
+        </md-input-container>
+
+        <md-input-container layout-padding>
+          <label>Details...</label>
+          <textarea ng-model="vm.potluck.details" columns="1" md-maxlength="1000"></textarea>
+        </md-input-container>
+
+        <div layout="row" ng-repeat="a in vm.potluck.dish" style="padding-left:6px;">
+          <md-input-container style="width:70%">
+            <label>Dish...</label>
+            <input required ng-model="vm.potluck.dish[$index].dishName" />
+          </md-input-container>
+          <!-- <md-input-container style="width:20%">
+            <label>Amount...</label>
+            <input required ng-model="vm.recipe.ingredients[$index].amount" />
+          </md-input-container> -->
+          <md-button type="button" ng-click="vm.potluck.dish.splice($index, 1)">X</md-button>
+        </div>
+
+        <div style="text-align:center">
+          <md-button type="button" class="md-accent" ng-click="vm.potluck.dish.push({});">Add Something for your guests to bring!</md-button>
+        </div>
+
+        <!-- <md-input-container flex="30" layout-padding>
+          <label>Colors:</label>
+            <md-select ng-model="vm.recipe.color" >
+              <md-option style="background-color: {{color}}" ng-repeat="color in vm.colors">{{color}}</md-option>
+            </md-select>
+        </md-input-container> -->
+
+        <div style="text-align:center; padding-top: 50px">
+          <md-button type="submit" class="md-raised">Submit</md-button>
+        </div>
+      </form>
+<!--
+      <div style="text-align: center; padding-top: 100px;">
+        <md-button class="md-primary" ng-click="vm.goToViewCom()">Back to community</md-button>
+      </div> -->
+
+
+    </div>
+  </div>
+
+</div>
